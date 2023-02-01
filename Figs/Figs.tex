@@ -1,0 +1,33 @@
+\documentclass{article}
+%\usepackage{subfig,graphicx,showframe}
+\usepackage{subfig,graphicx}
+\begin{document}
+
+\begin{figure}\centering
+    \subfloat[legend]{\label{a}\includegraphics[width=.5\linewidth]{SEU logo.png}}\hfill
+    \subfloat[legend]{\label{b}\includegraphics[width=.45\linewidth]{SEU EM logo.png}}\par 
+    \subfloat[legend]{\label{c}\includegraphics[width=.8\linewidth]{view.jpg}}
+    \caption{my fig}
+    \label{fig}
+\end{figure}
+
+\newpage
+
+\listoffigures
+\begin{figure}[htp]% [H] is so declass\'e!
+    \centering
+    \begin{minipage}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{SEU logo.png}
+    \caption{figure caption}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{SEU EM logo.png}
+    \caption{figure caption}
+    \end{minipage}\par
+    \vskip\floatsep% normal separation between figures
+    \includegraphics[width=0.8\textwidth]{view.jpg}
+    \caption{figure caption}
+\end{figure}
+
+
+\end{document}

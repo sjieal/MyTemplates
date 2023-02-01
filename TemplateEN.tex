@@ -1,0 +1,240 @@
+\documentclass[a4paper,fleqn,11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[round,authoryear]{natbib}
+\usepackage{setspace}  % for line space
+\usepackage{caption}  % control style of title and statement for figure and table
+\usepackage{subfigure}
+\usepackage{graphicx}  % for png image support
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{amsmath}  % for mathematical features
+\usepackage{amsthm} % for theorem and proof
+\usepackage{amssymb} % for mathematical symbols
+\usepackage{multirow}
+\usepackage{geometry} %for page set
+\usepackage{booktabs} % for toprule, midrule and bottomrule
+\usepackage{threeparttable} % for three lines table
+\usepackage{authblk}
+\usepackage{makecell}
+\usepackage[table]{xcolor} 
+\usepackage{appendix}
+\usepackage[bookmarksnumbered, bookmarksopen = true, colorlinks, linkcolor = blue]{hyperref}  % bookmarksnumbered现实章节序号, bookmarksopen默认打开书签；有色链接, 支持目录跳转；蓝色的目录链接
+%\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+%% 清除目录项的页号和分隔点
+%\usepackage[titles]{tocloft}
+%\cftpagenumbersoff{section}
+%\cftpagenumbersoff{subsection}
+%\cftpagenumbersoff{subsubsection}
+%\renewcommand{\cftdot}{}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Algorithm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithmb
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{Def}{Definition}
+\newtheorem{The}{Theorem}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}} % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+\renewcommand{\baselinestretch}{1.5} % Use 1.5 baseline
+
+\geometry{a4paper,left=1in,right=1in,top=1in,bottom=1in}
+
+\captionsetup{labelformat=default,labelsep=period} % Change the colon (:) to the period (.) in caption of tables.
+
+\begin{document}
+
+\title {This is an Article Template for My Documents with \LaTeX}
+
+\author[a,*]{Author1}
+\author[b]{Author2}
+\affil[a]{School of Economics and Management, Southeast University, Nanjing 211189, China} 
+\affil[b]{School of Management, University of Science and Technology of China, Hefei 230096, China}
+
+\date{\today}     % 这一行用来显示当前日期，{}为删除日期
+
+\maketitle
+
+\begin{abstract}
+	\noindent \LaTeX, which is pronounced \guillemotleft Lah-tech\guillemotright~or \guillemotleft Lay-tech\guillemotright~(to rhyme with \guillemotleft blech\guillemotright~or \guillemotleft Bertolt Brecht\guillemotright), is a document preparation system for high-quality typesetting. It is most often used for medium-to-large technical or scientific documents but it can be used for almost any form of publishing. LaTeX is not a word processor! Instead, LaTeX encourages authors not to worry too much about the appearance of their documents but to concentrate on getting the right content.
+	
+	~\\
+
+	\noindent\textbf{Keywords:} \LaTeX, word processor, scientific document, high-quality typesetting.
+\end{abstract}
+
+% Insert content
+\newpage
+\thispagestyle{empty} %no header
+\tableofcontents
+\thispagestyle{empty} %no header
+
+\newpage
+\section{Section 1}\label{section1}
+	
+The COVID-19 pandemic is rampant around the world, putting heavy pressure on the medical supply chain \citep{Inderfurth2013}. In particular, new dangerous variants (such as Delta and Omicron) of coronavirus spread faster in these two years. 
+
+\citet{Li2021} first propose a remanufacturing pattern named hybrid combinatorial remanufacturing (HCR) for the PCB-based product that its modules are connected to the printed circuit board (PCB), and find it suitable for the product with high material costs and low operating costs.
+	
+\section{Section 2}
+This is contents for Section 2. For example, Literature Review.
+
+\section{Section 3}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Table 1}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{ccccc|ccccc|ccccc}
+		\toprule
+		\multicolumn{5}{c|}{In-transit products before deadline} & \multicolumn{5}{c|}{Net demands} & \multicolumn{5}{c}{Inventory of modules} \\
+		\midrule
+		$S_1 - s_1$ & $\cdots$ & $S_i - s_i$ & $\cdots$ & $S_I - s_I$ & $N_1 - n_1$ & $\cdots$ & $N_i - n_i$ & $\cdots$ & $N_I - n_I$ & $k_1$ & $\cdots$ & $k_{m_j}$ & $\cdots$ & $k_{M_j}$ \\
+		\bottomrule
+	\end{tabular}}
+	\label{TABLE:1}
+\end{table}
+
+A normal equation, see \eqref{EQUATION:1}.
+\begin{equation}\label{EQUATION:1}
+	\underset{{{d}_{{{s}_{i}},{{a}_{t}}}}}{\mathop{\min C}}\,=\sum\limits_{i=1}^{I}{\sum\limits_{{{s}_{i}}=1}^{{{S}_{i}}}{\sum\limits_{{{a}_{t}}\in {\Omega}}^{{}}{{{d}_{{{s}_{i}},{{a}_{t}}}}{{C}_{{{s}_{i}},{{a}_{t}}}}}}}, t \leftrightarrow {{s}_{i}}, 1\le t\le T.
+\end{equation}
+
+A matrix equation is shown in \eqref{EQUATION:2}.
+\begin{equation}\label{EQUATION:2}
+	{X_t(a_t)} = \begin{smallmatrix}
+		\begin{bmatrix}\begin{smallmatrix}
+				e_{u, s_1} & \cdots & e_{u, s_i} & \cdots & e_{u, s_I} & e_{u, n_1} & \cdots & e_{u, n_i} & \cdots & e_{u, n_I} & e_{u, 1} & \cdots & e_{u, m_j} & \cdots & e_{u, M_j} \\
+				e_{r, s_1} & \ddots & e_{r, s_i} & \ & e_{r, s_I} & e_{r, n_1} & \ddots & e_{r, n_i} & \ & e_{r, n_I} & e_{r, 1} & \ddots & e_{r, m_j} & \ & e_{r, M_j} \\
+				e_{o, s_1} & \ & e_{o, s_i} & \ & e_{o, s_I} & 0 & \ & 0 & \ & 0 & e_{o, 1} & \ & e_{o, m_j} & \ & e_{o, M_j} \\
+				e_{p, s_1} & \ & e_{p, s_i} & \ddots & e_{o, s_I} & 0 & \ & 0 & \ddots & 0 & e_{p, 1} & \ & e_{p, m_j} & \ddots & e_{p, M_j} \\
+				e_{w, s_1} & \cdots & e_{w, s_i} & \cdots & e_{w, s_I} & 0 & \cdots & 0 & \cdots & 0 & e_{w, 1} & \cdots & e_{w, m_j} & \cdots & e_{w, M_j} \\
+				0 & \cdots & 0 & \cdots & 0 & 0 & \cdots & 0 & \cdots & 0 & 1 & \cdots & 0 & \cdots & 0 \\
+				\vdots & \ddots & \ & \ & \vdots & \vdots & \ddots & \ & \ & \vdots & \vdots & \ddots & \ & \ & \vdots \\
+				0 & \ & 0 & \ & 0 & 0 & \ & 0 & \ & 0 & 0 & \ & 1 & \ & 0 \\
+				\vdots & \ & \ & \ddots & \vdots & \vdots & \ & \ & \ddots & \vdots & \vdots & \ & \ & \ddots & \vdots \\
+				0 & \cdots & 0 & \cdots & 0 & 0 & \cdots & 0 & \cdots & 0 & 0 & \cdots & 0 & \cdots & 1	
+		\end{smallmatrix}\end{bmatrix}
+	\end{smallmatrix}.
+\end{equation}
+
+\subsection{Subsection 3.1}
+
+My dear and beautiful sister is shown in F
+
+\subsection{Subsection 3.2}
+We have the following four strategies for actions.
+
+Strategy \uppercase\expandafter{\romannumeral1}.
+
+Strategy \uppercase\expandafter{\romannumeral2}.
+
+Strategy \uppercase\expandafter{\romannumeral3}.
+
+Strategy \uppercase\expandafter{\romannumeral4}.
+	
+\begin{breakablealgorithm}
+% \setstretch{1.5} % Set linespace in Algorithm to be 1.5 baseline
+	\caption{Get\underline{~~}Current\underline{~~}Action($Z_t$, $\text{Q}_t$, $epsilon$, strategy)}
+	\begin{algorithmic}[1]
+		\State initialize $a_t$ = null, $u$\underline{~}planned = False, $r$\underline{~}planned = False, routine = False
+		\State $\Omega_{t}$ $\gets$ Get\underline{~~}Action\underline{~~}Space($Z_t$)
+		\If{$epsilon > \text{eps}$}
+			\State reweight the elements in $\Omega_{t}$ according to the risk preference
+			\State randomly select an element from $\Omega_{t}$ as $a_t$
+		\Else
+			\Repeat
+				\State $a_t \gets {\underset{a_t}{\operatorname {arg\,max}}}\,\text{Q}_t$ \hfill//find $a_t$ with the highest Q value in $\text{Q}_t$
+				\If{$a_t \in \Omega_{t}$}
+					\State break
+				\Else
+					\State exclude $\text{Q}(Z_t, a_t)$ from $\text{Q}_t$
+				\EndIf
+			\Until{$\text{Q}_t$ has no element left}
+		\EndIf
+		\If{$\text{Q}_t = \emptyset$}
+			\State \Return $a_t$ \hfill//return null as no action available
+		\EndIf
+		\If{strategy is \uppercase\expandafter{\romannumeral4}}
+			\If{$a_t$ makes $k_{m_j} < 0$ for $\forall{m_j}$} \hfill//module inventory is not enough
+				\If{$a_t$ = $u$}
+					\State $u$\underline{~}planned $\gets$ True \hfill//action $u$ is planned
+				\Else
+					\State $r$\underline{~}planned $\gets$ True \hfill//action $r$ is planned
+				\EndIf
+				\State routine $\gets$ True \hfill//execute routine job to fill in the inventory gap
+				\State $\Omega_{t}$ $\gets$ Get\underline{~~}Action\underline{~~}Space($Z_t$) \hfill//re-obtain $\Omega_{t}$ with action $u$ or $r$ planned
+				\State randomly select an element from $\Omega_{t}$ as $a_t$
+				\State \Return $a_t$
+			\EndIf
+			\If{$a_t \in \left\{u, r\right\}$}
+				\State routine $\gets$ False \hfill//routine job has done
+			\EndIf
+		\EndIf
+		\State \Return $a_t$
+	\end{algorithmic}
+\end{breakablealgorithm}
+
+\begin{The} \label{theo1}
+	Following the DeSoRVA rule, $N_i - n_i > 0$.
+\end{The}
+\begin{proof} 
+	Assume that there is no action available for the first time, but the demand has not been met for product $s_i$, i.e., $N_i - n_i > 0$. 
+\end{proof}
+
+From Theorem \ref{theo1}, we have the following 7 schemes.
+\begin{itemize}
+	\item Scheme PS.
+	\item Scheme RS.
+	\item Scheme RQ.
+	\item Scheme EQ.
+	\item Scheme ED.
+	\item Scheme OQ.
+	\item Scheme OD.
+\end{itemize}
+
+
+\section{Conclusion}
+	Conclude this paper.
+
+\appendix
+\section*{Appendix}	 % * Appendix is not numbered.
+
+%% Loading bibliography style file
+\bibliographystyle{cas-model2-names}
+%\bibliographystyle{plainnat}
+
+% Loading bibliography database
+\bibliography{Template EN}
+	
+\end{document}

@@ -1,0 +1,60 @@
+\documentclass[12pt, a4paper, oneside]{ctexbook} % 文档类型是ctexbook，设置字号12pt、A4纸张大小、单面打印
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs} % 使用的宏包
+
+\title{{\Huge{\textbf{笔记本标题}}}\\——副标题}
+\author{Sijie Li}
+\date{\today}
+\linespread{1.5} % 设置行间距为1.5
+
+%%%%%%%%%%%%%%%%%%%%%定理环境%%%%%%%%%%%%%%%%%%%%%%%%
+% Based on amsthm宏包
+% [theorem]的作用是让所有的环境同theorem的编号
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{example}[theorem]{例}
+\newtheorem{proposition}[theorem]{命题}
+
+\begin{document}
+
+% 封面：文档类型是ctexbook的话，就很容易制作封面
+\maketitle
+
+% 加入了单独一页，用来写前言
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\begin{center}
+    \Huge\textbf{前言}
+\end{center}~\
+
+这是笔记的前言部分. 
+
+\begin{flushright}
+    \begin{tabular}{c}
+        Sijie Li\\
+        \today
+    \end{tabular}
+\end{flushright} % flushright有居右对齐的作用，并且打印了前言的标题。
+
+% 目录
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\tableofcontents
+
+% 正文
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\chapter{章节标题}
+
+在这里可以输入笔记的内容.
+
+\section{小节标题}
+
+这是笔记的正文部分.
+
+\end{document}
