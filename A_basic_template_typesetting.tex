@@ -1,0 +1,177 @@
+\documentclass[10pt,UTF8]{ctexart}     %汉化文章
+%\usepackage[UTF8]{ctex}     %采用utf8编码
+%\usepackage{amsmath}        %数学公式
+\usepackage{multirow}  %表格实现跨多行
+%导言区的标题，作者，时间
+\title{LaTeX的文章}
+\author{Pacy}
+\date{\today}
+%宏包，可以实现目录跳转等
+\usepackage{hyperref}
+%定义摘要
+\usepackage{abstract}  %先加载包
+\renewcommand{\abstractname}{\Large{\textbf{摘要}}}
+\usepackage{ctex}	
+\usepackage{xcolor}   %调用颜色的宏包
+\begin{document}
+	\maketitle  %显示导言区标题
+	\setcounter{page}{0}   %设置页码
+	\thispagestyle{empty}  %只改变这一页，取消页码显示
+	\maketitle  %显示摘要
+	%写摘要内容
+	\begin{abstract}
+		主要是写了LaTex的一些基础排版知识，可以嵌套里面格式排版一些比较简单的文章，今天就学到这里啦！！！ \par  %\par是一个换行命令，且首行自动缩进
+		%以下写关键词
+		\textbf{关键词：}Latex、初学、快速入门   %\textbf显示黑体
+	\end{abstract}
+	%进入下一页
+	\newpage
+	%设置目录
+	\tableofcontents
+	\pagenumbering{Roman}  %采用罗马数字编号
+	\setcounter{page}{1}  %从1开始编号
+	%下一页
+	\newpage
+	%开始写正文
+	%先设置页码格式
+	\pagenumbering{arabic}  %阿拉伯数字编号
+	\setcounter{page}{1}  %从1开始
+	%设置第一节
+	\section{相关符号}
+	%设置第一小节
+	\subsection{中英文左右引号}
+	1、英文引号\par
+	``这是左双引号  \par %`为上排数字1左侧，英文输入下
+	''这是右双引号 \par  %'为enter左侧
+	2、中文左右双引号可以在中文输入法下输出 \par
+	“我是左和右引号”  \par
+	%第二小节
+	\subsection{短横、省略号、破折号}
+	1、英文的短横-   \par
+	连字符(一个短-)：daughter-in-law \par
+	数字起止符(两个短--)：page 1--2  \par
+	破折号(三个短---)：Listen---I'm serious \par
+	2、中文  \par
+	中文破折号——，在中文输入法下输入即可\par
+	中文省略号...，在英文下输入三个.即可\par
+	而英文下的省略号，要用\texttt{\char`\\}dots显示$\dots$。\par  %$ $是行内公式输入的一个环境，\dots要放在里面才能显示
+	%反斜杠\的输出比较特殊，可以用\texttt{\char`\\}输出反斜杠
+	
+	%下一节
+	\section{字体}
+	%第一小节
+	\subsection{字族}
+	%中文粗体是黑体表示，斜体是楷书表示
+	\songti 宋体格式——好好感受一下下不同字体哈哈哈哈哈哈哈哈哈哈哈哈，啦啦啦啦。 \par
+	\heiti 黑体格式——好好感受一下下不同字体哈哈哈哈哈哈哈哈哈哈哈哈，啦啦啦啦。 \par
+	\fangsong 仿宋格式——好好感受一下下不同字体哈哈哈哈哈哈哈哈哈哈哈哈，啦啦啦啦。\par
+	\kaishu 楷书格式——好好感受一下下不同字体哈哈哈哈哈哈哈哈哈哈哈哈，啦啦啦啦。\par
+	
+	
+	\subsection{斜体、粗体}
+	%斜体内容
+	\textsl{现在使用的是将变为伪斜体。斜体Slant字形。可以看英文比较明显一点。} \par
+	\textit{现在使用的是变为斜体。斜体Italic字形。}\par
+	%粗体
+	\textbf{对文字进行一个加粗处理。粗体BoldSeries。} \par
+	\textmd{中粗体。MiddleSeries。} \par
+	
+	\subsection{字号}
+	%表示一号到八号字体
+	
+	\zihao1 一号字体 \par
+	\zihao2 二号字体 \par
+	\zihao3 三号字体 \par
+	\zihao4 四号字体 \par
+	\zihao5 五号字体 \par
+	\zihao6 六号字体 \par
+	\zihao7 七号字体 \par
+	\zihao8 八号字体 \par
+	%表示小初号到小六号字体
+	\zihao{-1} 小一号字体 \par
+	\zihao{-2} 小二号字体 \par
+	\zihao{-3} 小三号字体 \par
+	\zihao{-4} 小四号字体 \par
+	\zihao{-5} 小五号字体 \par
+	\zihao{-6} 小六号字体 \par
+	%日常用的小四号为12pt，五号为10.5pt
+	%如果想要设置特殊字号，如下,10.5指字体大小10.5pt;\baselineskip指line-height行距，1.2倍行高;默认字体\rmfamily
+	\fontsize{12}{\baselineskip}{\rmfamily}
+	设置好的字体就是这样子了。\par
+	\zihao{4}
+	\subsection{颜色}
+	\definecolor{color1}{RGB}{250,34,20}  %定义颜色名color1的颜色
+	{\color{color1}{text}}   %设置为color1的颜色
+	{\color{blue}{text}}   %设置为蓝色
+	{\color{purple}{text}}   %设置为color1的颜色紫色
+	
+	\section{3}
+	\subsection{标签、引用}
+	%\label{key} 插入标签，\pageref{label}或者\ref{label}进行引用
+	
+	\begin{equation}\label{1}  %标号记为1
+	F=ma
+	\end{equation}
+	\begin{equation}\label{2} 
+	v=v_0 t
+	\end{equation}
+	
+	接下来我们来写一下引用，由(\ref{1})(\ref{2})得：得到有关运动学的一些结论。
+
+	\subsection{脚注}
+	%括号内写的是脚注的内容
+	这是一个脚注地方，太阳花\footnote{太阳花是一种花}
+	
+	\subsection{列表}
+	%无序列表
+	无序列表 
+	\begin{itemize}
+		\item 苹果好吃吗？
+		\item 香蕉好吃吗？
+		\item 西瓜好吃吗？
+	\end{itemize}
+	
+	%有序列表
+	有序列表
+	\begin{enumerate}
+		\item 昨天跑步了
+		\item 今天跑步了
+		\item 明天要跑步
+	\end{enumerate}
+	%改编号
+		有序列表改编号
+	\begin{enumerate}
+		\item[a、] 昨天跑步了
+		\item[b、] 今天跑步了
+		\item[c、] 明天要跑步
+	\end{enumerate}
+	%描述列表
+	
+	描述型列表 %方括号内容会加粗显示
+	\begin{description}
+		\item[LaTeX：] 一个排版系统
+		\item[.tex：] LaTeX文档扩展名
+	\end{description}
+	
+	\subsection{表格}
+	\begin{center}  %表格居中
+		\begin{tabular}[t]{|l|c||p{3em}r@{-}}
+		%可选参数[t]表示表格上端与同一行文字上端同高
+		%参数[c]表示与文字中央同高
+		%参数[b]表示文字与表格下端同高
+		%必选参数{}中|表示表格竖线及个数，最右边没|，表示留空，或者用@{}表示留空，也可以@{-}把竖直线换成-。
+		%lcr分别表示左对齐，居中，右对齐
+		%p{3em}表示指定某一列宽度，文字自动左对齐
+		%\hline表示绘制水平线
+		
+			\hline\hline   %所有列画水平线，两条
+			A&B&C&d\\      %&用于分割每一列
+			D&E&F&g\\
+			\cline{1-2}   %只在12列画横线
+			\multicolumn{2}{|c|}{G}&H&i\\  %\multicolumn{cols}{pos}{text}跨列命令
+			\hline
+		\end{tabular}
+	\end{center}
+
+	
+\end{document}

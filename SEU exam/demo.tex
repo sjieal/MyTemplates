@@ -1,0 +1,98 @@
+% !TEX encoding = UTF-8
+% !TEX program = latexmk
+\documentclass{SEUExam}
+% =================================================
+%       PDF信息
+% =================================================
+% PDF信息里的作者栏
+\author{Southeast University·Jieal}
+% PDF信息里的主题
+\Subject{Examination for SEU}
+% PDF信息里的关键词
+\Keywords{SEM; Logistics; 148201; ERP}
+
+% =================================================
+%       试卷头信息
+% =================================================
+% 年份
+\Year{2023}
+% 学期
+\Semester{1}
+% 课程
+\CourseID{B1410310}
+\Course{企业资源规划(研讨)}
+
+% 类型，如A/B/模拟等
+\Type{A}
+% 适用专业
+\Major{物流管理,电子商务}
+% 考试形式
+\Format{闭\hspace*{1em}卷}
+% 考试时长
+\Duration{120分钟}
+% 计分表中大题的数目
+\TotalPart{5}
+
+\examsetup{
+  % page/size = letter,
+}
+%\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+\maketitle
+
+\section{填空题（本题共10小题，每题4分，满分40分）}
+
+1. $\lim _{x \to 0} \frac{\sin (\sin (\sin x))}{\tan x}=$
+  \fillin[ ].
+
+
+\section{单项选择题（本题共10小题，每题4分，满分40分）}
+
+  1. 设当 $x \in(0,+\infty)$ 时, $f(x)=x \sin \frac{1}{x}$, 则在 $(0,+\infty)$ 内
+  \paren[ ]
+  \begin{choices}
+    \item $f(x)$ 与 $f^{\prime}(x)$ 都无界
+    \item $f(x)$ 有界, $f^{\prime}(x)$ 无界
+    \item $f(x)$ 与 $f^{\prime}(x)$ 都有界
+    \item $f(x)$ 无界, $f^{\prime}(x)$ 有界
+  \end{choices}
+
+  2. 管理活动通常分为高、中、基三个层次，分别对应三种类型决策过程，分别是 \paren[ ]
+  \begin{choices}
+    \item 非结构化决策、半结构化决策和结构化决策
+    \item 非结构化决策、结构化决策和半结构化决策
+    \item 主观性决策、一般性决策和过程性决策
+    \item 主观性决策、过程性决策和一般性决策
+  \end{choices}
+  
+  3. 下列说法不正确的是 \paren[ ]
+  \begin{choices}
+    \item 计算机网络是信息共享的基础
+    \item 管理信息系统是一个技术系统
+    \item 数据库为管理信息系统提供了信息的战略储备和供给
+    \item 现代化的管理组织和协调为管理信息系统提供了一颗奔腾的芯
+  \end{choices}
+  
+\section{计算题（本题共2小题，每题6分，满分12分）}
+
+1. $\lim _{n \to \infty} n\left[\left(1+\frac{1}{n}\right)^{n}-\upe\right]$
+
+\section{证明题（8分）}
+
+1. 设 $f(x)$ 在 $[a, b]$ 上连续, 在 $(a, b)$ 内可导, 试证至少存在一点 $\xi$, 使得
+  $$f(b)-f(a)=\xi f^{\prime}(\xi)(\ln b-\ln a).$$
+
+\begin{proof}[show-qed=false]
+  由柯西中值定理可知, 当 $f(x)$ 在 $[a, b]$ 上连续, 在 $(a, b)$ 内可导,
+
+  有
+  $\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f^{\prime}(\xi)}{g^{\prime}(\xi)}$，
+  即
+  $$\frac{f(b)-f(a)}{\ln b-\ln a}=\frac{f^{\prime}(\xi)}{\frac{1}{\xi}}
+    ~\Rightarrow~
+    f(b)-f(a)=\xi f^{\prime}(\xi)(\ln b-\ln a) $$
+  证毕.
+\end{proof}
+
+\end{document}

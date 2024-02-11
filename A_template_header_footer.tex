@@ -1,0 +1,167 @@
+\documentclass[11pt,a4paper,oneside,UTF8,fontset=none]{ctexart}
+\linespread{1.25}  % 行距
+%[]为可选参数，{}为必要参数
+%[]：字体：10pt，11pt，12pt
+%    纸张：a4paper-a6paper以及b和c，letteraper
+%    单双面：oneside，twoside
+%    字体为none为后续做准备
+%{}：文章类型：英文：Article，report，book
+%             中英文：ctexart，ctexrep，ctexbook
+%----------------------------------------------版面
+\usepackage{geometry}  % 宏包
+\geometry{left=1.8cm,right=1.8cm,top=2cm,bottom=2cm}
+%设置页边距
+\geometry{centering}
+%版心水平垂直均居中，竖直居中：vcentering，水平居中：hcentering
+%----------------------------------------------页眉页脚
+\usepackage{fancyhdr}  % 宏包
+\usepackage{lastpage}  % 获得总页数宏包
+\pagestyle{fancy}
+\fancyhf{}  % 清除页眉页脚保证默认样式不起作用
+\lhead{lefthead}
+\chead{hollow world}
+\rhead{righthead}
+\lfoot{通讯作者Email}
+\cfoot{\thepage ；\thepage/\pageref{LastPage}}  % 编辑页码；当前页/总页数
+\rfoot{Rightfoot}
+\renewcommand{\headrulewidth}{0pt}  % 设置页眉线粗
+\renewcommand{\footrulewidth}{0pt}  % 设置页脚线粗
+\pagestyle{empty}  % 首页之后清空格式
+%设置页眉页脚
+%\lhead{}, \chead{}, \rhead{}, \lfoot{}, \lhead{}, \rhead{}
+%----------------------------------------------字体字号
+\usepackage{fontspec}  % 宏包
+%题目
+\newfontfamily\timuen{Times New Roman}   % 设置英文局部字体
+\newCJKfontfamily\timucn{simhei.ttf}  % 设置中文局部字体 黑体
+\newcommand{\timu}[1]{\timucn \timuen #1}  % 混合中英文
+%作者：
+\newfontfamily\zzen{Times New Roman}  % 设置英文局部字体
+\newCJKfontfamily\zzcn{simfang.ttf}  % 设置中文局部字体 仿宋
+\newcommand{\zz}[1]{\zzcn \zzen #1}  % 混合中英文
+%单位:
+\newfontfamily\dwen{Times New Roman}  % 设置英文局部字体
+\newCJKfontfamily\dwcn{simsun.ttc}  % 设置中文局部字体 宋体
+\newcommand{\dw}[1]{\dwcn \dwen #1}  % 混合中英文
+%摘要和关键字：
+\newfontfamily\zygjzten{Times New Roman}  % 设置英文局部字体
+\newCJKfontfamily\zygjztcn{simhei.ttf}  % 设置中文局部字体 黑体
+\newcommand{\zygjzt}[1]{\zygjztcn \zygjzten #1}  % 混合中英文
+%摘要和关键字内容：
+\newfontfamily\zygjzen{Times New Roman}  % 设置英文局部字体
+\newCJKfontfamily\zygjzcn{simsun.ttc}  % 设置中文局部字体 宋体
+\newcommand{\zygjz}[1]{\zygjzcn \zygjzen #1}  % 混合中英文
+%正文内容：
+\newfontfamily\zwen{Times New Roman}  % 设置英文局部字体
+\newCJKfontfamily\zwcn{simsun.ttc}  % 设置中文局部字体 宋体
+\newcommand{\zw}[1]{\zwcn \zwen #1}  % 混合中英文
+%\setmainfont{Times New Roman}
+%setCJKmainfont{SourceHanSerifSC-SemiBold.otf}
+%更改全局英文字体为Times New Roman，更改中文字题为SourceHanSerifSC-SemiBold
+%\newcommand{\kt}{\setCJKfamilyfont{simkai.ttf}}
+%----------------------------------------------标题作者机构
+\title{\Large\timu 标题}  % 输入空格为不显示 设置头{\三号字\}
+	\author{\large\zz 作者$^*_{fn}$,二作\textsuperscript{上标} \\\dw\footnotesize 机构}  % 输入空格为不显示,$^$上标，$_$下标。
+	\date{}  % \normalsize 日期,输入空格为不显示
+	%\tiny:七号5.25pt;\scriptsize:六号7.875pt;\footnotesize:小五号9pt;
+	%\small:五号10.5pt;\normalsize:小四号12pt;\large:四号13.7pt;\Large:三号15.75pt;
+	%\LARGE:二号21pt;\huge:一号27.5pt;\Huge:小初号36pt。
+	%----------------------------------------------各级标题
+	\ctexset{
+		section={
+			format=\timu\raggedright\normalsize\large  % 设置 section 字体timu、左对齐（右对齐raggedlight)、无缩进、四号字
+		},
+		subsection={
+			format=\timu\raggedright\normalsize\small  % 设置 section 字体timu、左对齐（右对齐raggedlight)、无缩进、五号字
+		},
+		subsubsection={
+			format=\timu\raggedright\normalsize\small  % 设置 section 字体timu、左对齐（右对齐raggedlight)、无缩进、五号字
+		},
+	}
+	%----------------------------------------------表格
+	\usepackage{booktabs}  % 宏包
+	\usepackage{multirow}  % 复杂表格宏包
+	% 并列
+	\usepackage{floatrow}
+	\floatsetup[table]{capposition=top}
+	\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+	% 表标题字号设置
+	\usepackage{caption}
+	\captionsetup[table]{font=footnotesize}
+	%----------------------------------------------
+	\begin{document}
+		\maketitle  %显示标题、作者、日期
+		\thispagestyle{fancy}  %显示页眉页脚
+		\zygjzt\footnotesize  % 调用字体并设置字号
+		\noindent{\textbf{摘\hspace{1em}要：}}
+		{en-zhaiyao}\vspace{8em}
+		%\不缩进{\文本加粗{摘\hspace{ }要：}摘要内容}
+		%\hspace{}字符间空格，以em、cm等可以作为单位，精确控制空格长度
+		%\vspace{行间距微调}
+		\newline
+		%换行，分段\par，分页\newpage或\clearpage
+		\zygjzt\footnotesize
+		\noindent{关键字：}  % \不缩进{\文本加粗{关键字：}}
+		{LaTeX}\vspace{1em}
+		\newline
+		%换行，分段\par，分页\newpage或\clearpage
+		%----------------------------------------------
+		
+		
+		\section{我是一级标题}
+		\zw\small
+		分\hfill 栏\hfill 符
+		
+		\subsection{我是二级标题}
+		分\hfill 栏\hfill 符
+		\newline
+		%换行，分段\par，分页\newpage或\clearpage
+		疯\hfill 狂\hfill 分\hfill 栏
+		%\hfill可以理解为分栏符
+		
+		\subsubsection{我是三级标题\ 表1}
+		我就是不分栏
+		\par
+		疯\hfill 狂\hfill 分\hfill 栏  % 换行和分段的悬挂不一样
+		%----------------------------------------------
+		\begin{table}[H]  % [H]表格紧跟正文
+			\begin{floatrow}
+				\capbtabbox{
+					\zz\scriptsize
+					\begin{tabular}{ccccc}  % 需要5列
+						\toprule  % 第一条线
+						A                     & B                     & C                     & D                     & E                     \\
+						\midrule  % 第二条线
+						\multicolumn{1}{l}{1} & \multicolumn{1}{l}{2} & \multicolumn{1}{l}{3} & \multicolumn{1}{l}{4}& \multicolumn{1}{l}{5}\\  %\multicolumn{1}{l}{1}占用{1列}{居左}{内容为1}
+						\bottomrule  % 第三条线
+				\end{tabular}}
+				{\zygjz\caption{示例1.1}\label{table4}}  % 前表标题五号字，设置一个另一个会联动，\label规定其为表1，不设置会顺序编号
+				\hspace{10em}  % 增加并列间距
+				\capbtabbox{
+					\zz\scriptsize
+					\begin{tabular}{ccccc}  % 需要5列
+						\toprule  % 第一条线
+						\multirow{2}{*}{A} & \multicolumn{2}{l}{B} & \multicolumn{2}{l}{C} \\  % \multirow占用{2列}{自适应宽度}{内容为A}
+						& \multicolumn{1}{l}{D} & \multicolumn{1}{l}{D} & \multicolumn{1}{l}{D} & \multicolumn{1}{l}{D} \\
+						\midrule  % 第二条线
+						\multicolumn{1}{l}{1} & \multicolumn{1}{l}{2} & \multicolumn{1}{l}{3} & \multicolumn{1}{l}{4}& \multicolumn{1}{l}{5}\\  %\multicolumn{1}{l}{1}占用{1列}{居左}{内容为1}
+						\bottomrule  % 第三条线
+				\end{tabular}}
+				{\zygjz\caption{示例1.2}\label{table5}}  % 后标标题五号字
+			\end{floatrow}
+		\end{table}
+		
+		\begin{table}[H]
+			\centering
+			{\zygjz\caption{单独示例}}
+			\zz\scriptsize
+			\begin{tabular}{ccccc}  % 需要5列
+				\toprule  % 第一条线
+				\multirow{2}{*}{A} & \multicolumn{2}{l}{B} & \multicolumn{2}{l}{C} \\  % \multirow占用{2列}{自适应宽度}{内容为A}
+				& \multicolumn{1}{l}{D} & \multicolumn{1}{l}{D} & \multicolumn{1}{l}{D} & \multicolumn{1}{l}{D} \\
+				\midrule  % 第二条线
+				\multicolumn{1}{l}{1} & \multicolumn{1}{l}{2} & \multicolumn{1}{l}{3} & \multicolumn{1}{l}{4}& \multicolumn{1}{l}{5}\\  %\multicolumn{1}{l}{1}占用{1列}{居左}{内容为1}
+				\bottomrule  % 第三条线
+			\end{tabular}
+		\end{table}
+	\end{document}

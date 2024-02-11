@@ -1,0 +1,313 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, appendix, bm, graphicx, hyperref, mathrsfs, float, subfigure, booktabs, tabularx, longtable, geometry, pdfpages}
+%\usepackage{fancyhdr}	%用于更改默认的页眉页脚格式
+\usepackage{ragged2e}  % for \RaggedRight macro
+\usepackage{listings}  % 用于插入代码
+\usepackage{xcolor}  % 用于设置颜色
+\usepackage{authblk}  % 用于作者环境
+
+\geometry{left=1in,right=1in,top=1in,bottom=1.5in}
+
+\title{\textbf{A Simple and Elegant \LaTeX{} Article Template}}
+\author{Sijie Li}
+\affil{School of Economics and Management, Southeast University}
+\date{\today}
+\linespread{1.5}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{example}[theorem]{例}
+\newtheorem{proposition}[theorem]{命题}
+\renewcommand{\abstractname}{\Large\textbf{摘要}}
+
+\begin{document}
+
+%\includepdf{a_PDF.pdf},这部分程序可以将一个外部的pdf文件加进去
+%\includepdf{a_PDF.pdf}
+
+\maketitle
+
+\setcounter{page}{0}
+\thispagestyle{empty}
+
+\begin{abstract}
+遵义会议是中国共产党历史上开始独立自主地解决中国革命和革命战争的重大问题的会议, 实际确立了毛泽东在中共中央和红军的领导地位, 在极端危急的关头挽救了党, 挽救了红军, 挽救了中国革命, 是党的历史上一个生死攸关的转折点.
+
+邓小平参加遵义会议了吗? 他说他参加了, 但是我觉得不可能, 我不相信他! 他是一个zzp, 我坚信, 教员打到他是有原因的, 是正确的!
+
+\par\textbf{关键词:} 遵义会议; 中国革命; 红军; 教员; 生死攸关; 转折点. 
+\end{abstract}
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\tableofcontents		%目录,不要可以直接删去
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%修改页眉页脚位置,需要在开头将\usepackage{fancyhdr}的注释去掉
+%\pagestyle{fancy}
+%\fancyhf{} % 清除默认的页眉和页脚
+%\rhead{第 \thepage 页}
+%%\lhead{左侧页眉}
+%%\rfoot{第 \thepage 页}
+%%\lfoot{左侧页脚}
+
+\section{一级标题}
+\LaTeX{} 默认的`tabular'包一个恼人的问题是不能自动调节表格每一个条目的宽度，经常会导致某一个条目字数太多超出了页面margin。使用`tabularx'包可以方便的解决这个问题。
+
+附上一段有效的代码：
+
+%% create a derivative column type called 'L':
+\newcolumntype{L}{>{\RaggedRight\hangafter=1\hangindent=0em}X}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Notation symbols used in this paper}
+	\begin{tabularx}{\textwidth}{ p{5cm} L }
+		\toprule
+		Notations  & Definition \\
+		\midrule
+		$C$ & client set \\
+		$c\in C$ & an element in the client set \\
+		$S$ & server set \\
+		$s\in S$ & an element in the server set \\
+		$\mathbf{index} \gets \text{compute\_index}(s)$ & compute the Bloom filter indices (returned as an array) related to a set element $s$\\
+		$\mathbf{BF}_{C}[\cdot]$ & Bloom filter array for the set $C$ where $BF_{C}[idx]$ with $idx\in \text{compute\_indices(c) for all } c\in C$ is set to 1, otherwise 0.\\
+		$\delta$   & threshold pulse function, \textit{i.e.}, returns 1 if the input value is above(below) a threshold, otherwise returns 0\\
+		$LWE_{\mathbf{s}}^{n,q}(m) \in \mathbb{Z}_q^n\times \mathbb{Z}_q $ & an LWE encryption of the message $m\in \mathbb{Z}_q$ w.r.t. secret key $\mathbf{s}$ and lattice dimension $n$\\
+		$LWE_{\mathbf{z}}^{N,Q}(m) \in \mathbb{Z}_Q^N\times \mathbb{Z}_Q $ & an LWE encryption of the message $m\in \mathbb{Z}_Q$ w.r.t. secret key $\mathbf{z}$ and lattice dimension $N$\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\subsection{二级标题}
+正文
+
+\subsubsection{三级标题}
+正文
+
+\section{图片插入}
+
+\subsection{单行单图}
+	这部分代码插入一个单行单图.
+
+	\begin{figure}[H]
+		\centering								%居中
+		\includegraphics[scale=1.0]{LaTeX_article_template.jpg}		%[scale=图片缩放比]{图片路径(名称)}
+		\caption{图片名称}						%论文中图片名称
+	\end{figure}
+
+\subsection{单行双图}
+	这部分代码可以插入单行双图.
+
+	\begin{figure}[htbp]
+		\begin{minipage}[t]{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth]{LaTeX_article_template.jpg}	%图名,路径中不能有中文字符,.jpg和.png格式都可,其他格式可以试试
+			\centering 左图图名
+		\end{minipage}
+		\begin{minipage}[t]{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth]{LaTeX_article_template.jpg}
+			\centering 右图图名
+		\end{minipage}
+		\caption{总的图名}
+		\label{a_label}
+	\end{figure}
+
+\subsection{单行三图}
+	这部分代码可以插入单行双图.
+	%\iffalse
+	\begin{figure}[htbp]	%[htbp]是浮动格式
+		\centering
+		\subfigure[]{
+			\includegraphics[width=4cm,height=3cm]{LaTeX_article_template.jpg} \label{a_label}
+		}
+		\hspace{2mm}
+		\subfigure[]{
+			\includegraphics[width=4cm,height=3cm]{LaTeX_article_template.jpg} \label{a_label}
+		}	
+		\hspace{2mm}
+		\subfigure[]{
+			\includegraphics[width=4cm,height=3cm]{LaTeX_article_template.jpg} \label{a_label}
+		}
+		\caption{总的图名}
+		\label{a_label}
+	\end{figure}
+	%\fi
+
+\section{表格插入}
+\subsection{一个很长的可跨页的三线表(两列)}
+	% 这部分代码可以插入一个长的跨页三线表
+	\begin{longtable}[c]{@{}ll@{}}
+		\caption{符号说明}\label{tab:symbols}\\		%表名称
+		\toprule
+		符号    & 说明  \\							%列标签
+		\midrule
+		\endfirsthead
+		\multicolumn{2}{c}{{\bfseries Table \thetable\ continued from previous page}} \\
+		\toprule
+		符号    & 说明 \\
+		\midrule
+		\endhead
+		\midrule
+		\multicolumn{2}{r}{{Continued on next page}} \\ \bottomrule
+		\endfoot
+		\bottomrule
+		\endlastfoot
+		%下面是表内容
+		$\mu$  & 样本数据的平均值 \\
+		$\sigma$ & 样本数据的标准差 \\
+		$n$     & 样本数   \\
+		$x_i$ & 第$i$个样本数据 \\
+		$D_i$  & 数据点与平均值之间的偏差程度 \\
+		$|D_i|$ & $D_i$的绝对值 \\
+		$k$   & 邻近点的数量 \\
+		$X,Y$   & 两个变量  \\
+		$\sum$ & 求和符号 \\
+		$r_s$   & 相关系数 \\
+		$R_X,R_Y$ & 排名 \\
+		$\overline R_X, \overline R_Y$ & 平均排名 \\
+		$d_i$   & 排名差 \\
+		$d_i^2$ & 排名差平方 \\
+		$\sum(R_X-\overline R_X)(R_Y-\overline R_Y)$ & 协方差 \\
+		$\sum(R_X-\overline R_X)^2$ & 第一个变量等级排名方差 \\
+		$\sum(R_Y-\overline R_Y)^2$ & 第二个变量等级排名方差 \\
+		$x_t$ & 序列数据在时间步$t$的输入 \\
+		$y_t$ & 序列数据在时间步$t$的输出 \\
+		$h_t$ & 时间步$t$的隐藏状态 \\
+		$W_{hx}$ & 输入与隐藏状态之间的权重矩阵 \\
+		$W_{hh}$ & 隐藏状态与自身之间的权重矩阵 \\
+		$W_{yh}$ & 隐藏状态与输出之间的权重矩阵 \\
+		$b_h$ & 隐藏状态的偏置 \\
+		$b_y$ & 输出层的偏置 \\
+		$f$ & 激活函数 \\
+	\end{longtable}
+	
+\subsection{一个很长的可跨页的三线表(三列)}
+	\begin{longtable}[c]{@{}p{0.25\linewidth}p{0.25\linewidth}p{0.25\linewidth}@{}}		%p{0.25\linewidth}表示一列的宽度为0.25倍的页面宽度,共三列.如果想使用默认宽度,可以改为\begin{longtable}[c]{@{}lll@{}}
+		\caption{长表格标题} \\
+		\toprule
+		列1 & 列2 & 列3 \\
+		\midrule
+		\endfirsthead
+		\caption{续表} \\
+		\toprule
+		列1 & 列2 & 列3 \\
+		\midrule
+		\endhead
+		\midrule
+		\multicolumn{3}{r}{续下页}
+		\endfoot
+		\bottomrule
+		\endlastfoot
+		
+		% 表格内容
+		内容1 & 内容2 & 内容3 \\
+		内容4 & 内容5 & 内容6 \\
+		% ...
+	\end{longtable}
+
+\section{公式插入}
+\subsection{单行居中公式(不带序号)}
+	%下面的代码是两行单行公式
+	$$ \mu = \frac{1}{n}\sum_{i=1}^n x_i $$
+	$$ \sigma = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i-\mu)^2} $$
+
+\subsection{单行居中公式(右侧带序号)}
+	\begin{equation}
+		\label{eq1}
+		h=\sqrt{m+n}+a
+	\end{equation}
+
+	\begin{equation}
+		\label{eq1}
+		r_s=\frac{\sum(R_X-\overline R_X)(R_Y-\overline R_Y)}{\sqrt{\sum(R_X-\overline R_X)^2\sum(R_Y-\overline R_Y)^2}}=\frac{\sum{R_X R_Y}-\frac{\sum{R_X} \sum{R_Y}}{n}}{\sqrt{\left[\sum(R_X)^2-\frac{(\sum R_X)^2}{n}\right]\left[\sum(R_Y)^2-\frac{(\sum R_Y)^2}{n}\right]}}
+	\end{equation}
+
+\section{空行,新页面}
+	~\\		%空行
+
+\newpage%新页面
+
+%参考文献
+\begin{thebibliography}{99}
+	\bibitem{citation-key} Authors. Title of the article. Journal Name, Year, Vol(Issue): Pages.
+	% 在这里添加其他参考文献条目
+	%示例:
+	\bibitem{cuiyang2013} 崔洋, 孙银川, 常倬林. 短期太阳能光伏发电预测方法研究进展[J]. 资源科学, 2013, 35(7): 1474-1481.
+\end{thebibliography}
+
+
+
+
+%新页面
+\newpage
+
+%开始附录
+\begin{appendices}
+	\renewcommand{\thesection}{\Alph{section}}
+	\section{附录部分}
+	\subsection{附录1}
+	内容
+	\subsubsection{代码示例}
+	%代码格式调节
+	\lstset{
+		basicstyle=\ttfamily\small, % 基本样式为等宽小号字体
+		lineskip=1ex, % 行距设置为 1.5ex
+		language=Matlab, % 设置语言为 MATLAB,也可以改成其他代码
+		numbers=left, % 行号显示在左侧
+		numbersep=-100pt,%行号与代码之间的距离
+		numberstyle=\tiny\color{gray}, % 行号样式为小号灰色
+		stepnumber=1, % 行号步长为 1
+		keywordstyle=\color{blue}\bfseries, % 关键字样式为蓝色加粗
+		commentstyle=\color[RGB]{0,128,0}, % 注释样式为绿色
+		stringstyle=\color[RGB]{128,0,0}, % 字符串样式为红色
+		showspaces=false, % 不显示空格
+		showstringspaces=false, % 不显示字符串中的空格
+		breaklines=true, % 自动换行
+		extendedchars=false,  %解决代码跨页时,章节标题,页眉等汉字不显示的问题
+		captionpos=b, % 标题位置为底部
+		escapeinside={(*@}{@*)}, % 在代码中使用 (*@  @*) 包裹的内容会被 LaTeX 解释器忽略
+		escapebegin=\begin{CJK*}{GBK}{hei},escapeend=\end{CJK*},      % 代码中出现中文必须加上,否则报错
+		%xleftmargin=0.02em 
+		xleftmargin=-80pt, % 代码左侧与边距的距离
+		xrightmargin=-10pt, % 代码右侧与边距的距离
+		aboveskip=10pt, % 代码块与上方内容的距离
+		belowskip=5pt % 代码块与下方内容的距离
+		%texcl=true,
+	}
+	%插入代码
+	\begin{lstlisting}
+		aa = xlsread('STATIONS3.xlsx');
+		sz = size(aa,2);
+		for i=1:sz
+		u = mean(aa(:,i),'omitnan');  % 忽略数据中的缺失值计算均值
+		sigma = std(aa(:,i),'omitnan');   % 计算标准差  std(x,0,'omitnan')是总体标准差
+		lb = u - 3*sigma;    % 区间下界,low bound的缩写
+		rb = u + 3*sigma;   % 区间上界,upper bound的缩写
+		tmp = (aa(:,i) < lb) | (aa(:,i) > rb);
+		ind = find(tmp);
+		aa((ind),i)=nan;
+		end
+		xlswrite('aa.xlsx',aa)
+	\end{lstlisting}
+	
+	%插入代码(改语言)
+	%\begin{lstlisting}[language=Python]
+	%	def hello_world():
+	%	print("Hello, world!")
+	%	
+	%	hello_world()
+	%\end{lstlisting}
+	
+	\subsection{附录2}
+	内容
+	\subsubsection{附录2.1}
+	内容
+\end{appendices}
+\end{document}

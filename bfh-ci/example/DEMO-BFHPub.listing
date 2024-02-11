@@ -1,0 +1,12 @@
+	whoami `\StartConsole`
+	root `\setupOSXPrompt{root}`
+	hostname `\StartConsole`
+	ubuntu`\setupOSXPrompt{root}`
+	ssh bob@remotehost`\StartConsole`
+	bob@remotehost's`\ `password:
+	Linux remote host 2.6.32-5-686 #1 SMP Sun Sep 23 09:49:36 UTC 2012 i686
+	You have mail.
+	Last login: Wed Oct 16 01:12:35 2012 from localhost`\setupOSXPrompt{remote}`
+	whoami`\StartConsole`
+	user`\setupOSXPrompt{remote}`
+	_
